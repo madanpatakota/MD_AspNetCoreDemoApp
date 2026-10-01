@@ -1,4 +1,6 @@
-using MD_AspNetCoreDemoApp.Controllers;
+//using MD_AspNetCoreDemoApp.Controllers;
+using MD_AspNetCoreDemoApp.Interfaces;
+using MD_AspNetCoreDemoApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-//builder.Services.AddScoped<IEmployeeV2Repository, EmployeeV2Repository>();
-//builder.Services.AddTransient<IEmployeeV2Repository, EmployeeV2Repository>();
-builder.Services.AddSingleton<IEmployeeV2Repository, EmployeeV2Repository>();
+builder.Services.AddSingleton<ISingletonCoffee , CoffeeService>();
+builder.Services.AddScoped<IScopedCoffee       , CoffeeService>();
+builder.Services.AddTransient<ITransientCoffee , CoffeeService>();
 
 //IEmployeeV2Repository iemp = new EmployeeV2Repository();
 
