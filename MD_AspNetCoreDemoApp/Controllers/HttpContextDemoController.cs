@@ -8,6 +8,11 @@ namespace MD_AspNetCoreDemoApp.Controllers
     public class HttpContextDemoController : ControllerBase
     {
 
+        public HttpContextDemoController()
+        {
+            Console.WriteLine("hello");
+        }
+
         //[HttpPost]
         //[Route("ShowContext/{Id}")]
         //public IActionResult ShowContext()

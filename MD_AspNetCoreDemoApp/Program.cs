@@ -1,5 +1,7 @@
 
 
+using MD_AspNetCoreDemoApp.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +20,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 
+app.UseMiddleware<HttpContextMiddleware>();
+app.UseMiddleware<LoggindMiddleware>();
+
+
 app.UseSwagger();   //https://localhost:7114/swagger/swagger.json 
 
 app.UseSwaggerUI();
@@ -30,6 +36,6 @@ app.UseHttpsRedirection();
 
 //app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers();   //api/HttpContextDemo/ShowContext
 
 app.Run();
